@@ -1,8 +1,6 @@
 return {
-  -- For a local plugin without a repository
   'floaterminal', -- Just a name to identify it in lazy.nvim
 
-  -- Specify that this is a local plugin
   dir = '~/.config/nvim/lua/custom/plugins', -- Empty string tells lazy.nvim it's in the plugins directory already
 
   config = function()

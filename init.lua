@@ -11,6 +11,7 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.o.tabstop = 4
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 -- You can also add relative line numbers, to help with jumping.
@@ -839,7 +840,7 @@ require('lazy').setup({
           style = {},
         },
       }
-      vim.cmd.colorscheme 'vague'
+      -- vim.cmd.colorscheme 'vague'
     end,
   },
   {
@@ -860,10 +861,10 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('kanagawa-paper').setup {
-        transparent = true,
+        --transparent = true,
         diag_background,
       }
-      --vim.cmd 'colorscheme kanagawa-paper-ink'
+      vim.cmd 'colorscheme kanagawa-paper-ink'
     end,
   },
   -- Highlight todo, notes, etc in comments
@@ -979,6 +980,11 @@ require('lazy').setup({
   },
 })
 -- Custom Keybindings
+
+-- Add fold
+vim.api.nvim_set_keymap('n', '<leader>cz', [[/[{[(]<CR>zfaBzc]], { noremap = true, silent = true, desc = 'Add fold at next {, (, or [' })
+
+-- Open Terminal
 vim.keymap.set('n', '<leader>0', function()
   vim.cmd.vnew()
   vim.cmd.term()
@@ -987,6 +993,7 @@ vim.keymap.set('n', '<leader>0', function()
   vim.api.nvim_win_set_height(0, 10)
 end)
 
+-- Open Lazygit
 vim.keymap.set('n', '<leader>lg', function()
   vim.cmd.vnew()
   vim.cmd.term()

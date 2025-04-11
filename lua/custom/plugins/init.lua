@@ -6,4 +6,5 @@ return {
   'kkharji/sqlite.lua',
   { import = 'custom.plugins.bookmarks' },
   { import = 'custom.plugins.floaterminal' },
+  { import = 'custom.plugins.commenttoggler' },
 }
