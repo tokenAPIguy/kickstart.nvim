@@ -1,7 +1,7 @@
 return {
   'floaterminal', -- Just a name to identify it in lazy.nvim
 
-  dir = '~/.config/nvim/lua/custom/plugins', -- Empty string tells lazy.nvim it's in the plugins directory already
+  dir = '~/.config/nvim/lua/custom/plugins/local', -- Empty string tells lazy.nvim it's in the plugins directory already
 
   config = function()
     vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>')
@@ -54,7 +54,7 @@ return {
     end
 
     vim.api.nvim_create_user_command('Floaterminal', toggle_terminal, {})
-    vim.keymap.set({ 'n', 't' }, '<leader>f0', toggle_terminal)
+    vim.keymap.set({ 'n', 't' }, '<leader>f0', toggle_terminal, { desc = 'Floaterminal' })
   end,
 
   -- Optional but helpful for lazy.nvim

@@ -1,6 +1,7 @@
 return {
-  'commenttoggler', -- Name for lazy.nvim
-  dir = vim.fn.stdpath 'config' .. '/lua/custom/plugins/commenttoggler',
+  'toggle_comments', -- Name for lazy.nvim
+  dir = '~/.config/nvim/lua/custom/plugins/local', -- Empty string tells lazy.nvim it's in the plugins directory already
+  -- dir = vim.fn.stdpath 'config' .. '/lua/custom/plugins/local/commenttoggler',
   config = function()
     local function toggle_comment()
       local mode = vim.api.nvim_get_mode().mode
@@ -52,7 +53,7 @@ return {
     vim.api.nvim_create_user_command('ToggleComment', toggle_comment, {})
 
     -- Set up keymaps
-    vim.keymap.set({ 'n', 'v' }, '<leader>c/', toggle_comment, { noremap = true, silent = true })
+    vim.keymap.set({ 'n', 'v' }, '<leader>c/', toggle_comment, { noremap = true, silent = true, desc = 'ToggleComment' })
   end,
   lazy = false, -- Load immediately
   keys = {
