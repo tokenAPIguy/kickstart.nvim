@@ -3,8 +3,8 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  'kkharji/sqlite.lua',
-  { import = 'custom.plugins.bookmarks' },
-  { import = 'custom.plugins.floaterminal' },
-  { import = 'custom.plugins.commenttoggler' },
+  { import = 'custom.plugins.remote.smear_cursor' },
+
+  { import = 'custom.plugins.local.floaterminal' },
+  { import = 'custom.plugins.local.toggle_comments' },
 }
