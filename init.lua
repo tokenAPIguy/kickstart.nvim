@@ -355,6 +355,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      -- Custom Telescope bindings
+      vim.keymap.set('n', '<leader>m', function()
+        vim.cmd 'Telescope marks'
+      end, { desc = 'Show Marks' })
+      vim.keymap.set('n', '<leader>sfn', builtin.lsp_document_symbols, { desc = '[S]earch [F]u[n]c' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -840,7 +846,7 @@ require('lazy').setup({
           style = {},
         },
       }
-      -- vim.cmd.colorscheme 'vague'
+      vim.cmd.colorscheme 'vague'
     end,
   },
   {
@@ -864,7 +870,7 @@ require('lazy').setup({
         --transparent = true,
         diag_background,
       }
-      vim.cmd 'colorscheme kanagawa-paper-ink'
+      -- vim.cmd 'colorscheme kanagawa-paper-ink'
     end,
   },
   -- Highlight todo, notes, etc in comments
@@ -886,7 +892,17 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          add = 'ca', -- Add surrounding
+          delete = 'sd', -- Delete surrounding
+          replace = 'cs', -- Change surrounding (was `sr`)
+          find = 'sf', -- Find surrounding (to the right)
+          find_left = 'sF', -- Find surrounding (to the left)
+          highlight = 'sh', -- Highlight surrounding
+          update_n_lines = 'sn', -- Update `n_lines`
+        },
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -980,6 +996,10 @@ require('lazy').setup({
   },
 })
 -- Custom Keybindings
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-f>', '<C-f>zz')
+vim.keymap.set('n', '<C-b>', '<C-b>zz')
 
 -- Add fold
 vim.api.nvim_set_keymap('n', '<leader>cz', [[/[{[(]<CR>zfaBzc]], { noremap = true, silent = true, desc = 'Add fold at next {, (, or [' })
