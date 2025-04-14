@@ -359,7 +359,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>m', function()
         vim.cmd 'Telescope marks'
       end, { desc = 'Show Marks' })
-      vim.keymap.set('n', '<leader>sfn', builtin.lsp_document_symbols, { desc = '[S]earch [F]u[n]c' })
+      vim.keymap.set('n', '<leader>sd', builtin.lsp_document_symbols, { desc = '[S]earch [D]ocument symbols' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -841,7 +841,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('vague').setup {
-        transparent = true,
+        transparent = false,
         style = {
           style = {},
         },
