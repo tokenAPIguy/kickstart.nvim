@@ -365,7 +365,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
+          w = 10,
           previewer = false,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
@@ -490,7 +490,13 @@ require('lazy').setup({
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>ca', function()
+            vim.lsp.buf.code_action {
+              filter = function(action)
+                return action.title ~= 'Browse gopls feature documentation'
+              end,
+            }
+          end, '[C]ode [A]ction', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -868,11 +874,26 @@ require('lazy').setup({
     config = function()
       require('kanagawa-paper').setup {
         --transparent = true,
-        diag_background,
       }
-      -- vim.cmd 'colorscheme kanagawa-paper-ink'
+      --vim.cmd 'colorscheme kanagawa-paper-ink'
     end,
   },
+  {
+    'catppuccin/nvim',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {}
+      --vim.cmd 'colorscheme catppuccin'
+    end,
+  },
+  {
+    'ramojus/mellifluous.nvim',
+    config = function()
+      require('mellifluous').setup {}
+      --vim.cmd 'colorscheme mellifluous'
+    end,
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
