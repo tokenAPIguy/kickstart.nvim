@@ -827,83 +827,11 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
-      }
-    end,
-  },
-  {
-    'vague2k/vague.nvim',
-    priority = 1000,
-    config = function()
-      require('vague').setup {
-        comments = 'italic',
-        transparent = false,
-        style = {
-          style = {},
-        },
-      }
-      --vim.cmd.colorscheme 'vague'
-    end,
-  },
-  {
-    'rose-pine/neovim',
-    priority = 1000,
-    config = function()
-      require('rose-pine').setup {
-        transparent = true,
-        style = {
-          style = {},
-        },
-      }
-      --vim.cmd 'colorscheme rose-pine'
-    end,
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    priority = 1000,
-    config = function()
-      require('kanagawa').setup {
-        --transparent = true,
-      }
-      vim.cmd 'colorscheme kanagawa-paper-ink'
-    end,
-  },
-  {
-    'thesimonho/kanagawa-paper.nvim',
-    priority = 1000,
-    config = function()
-      require('kanagawa-paper').setup {
-        --transparent = true,
-      }
-      --vim.cmd 'colorscheme kanagawa-paper-ink'
-    end,
-  },
-  {
-    'catppuccin/nvim',
-    priority = 1000,
-    config = function()
-      require('catppuccin').setup {}
-      --vim.cmd 'colorscheme catppuccin'
-    end,
-  },
-  {
-    'ramojus/mellifluous.nvim',
-    config = function()
-      require('mellifluous').setup {}
-      --vim.cmd 'colorscheme mellifluous'
-    end,
-  },
+  -- You can easily change to a different colorscheme.
+  -- Change the name of the colorscheme plugin below, and then
+  -- change the command in the config to whatever the name of that colorscheme is.
+  --
+  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -995,6 +923,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  { import = 'kickstart.plugins.themes' },
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
